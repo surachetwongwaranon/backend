@@ -4,22 +4,36 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
+import TourRoute from './routes/tours.js'
+import reviewRoute from './routes/review.js'
+import bookingRoute from './routes/booking.js'
+
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
 
+mongoose.set("strictQuery", false)
 const connect = async()=>{
     try{
+        await mongoose.connect(process.env.MONGO_URI,{
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
 
+        console.log('MongoDB database connected');
     } catch(err){
-
+        console.log('MongoDB database connected failed');
     }
 }
 
 app.use(express.json())
 app.use(cors())
 app.use(cookieParser())
+app.use('/tours', TourRoute)
+app.use('/review', reviewRoute)
+app.use('/booking', bookingRoute)
 
 app.listen(port, ()=>{
+    connect();
     console.log('server listening on port', port);
 })
