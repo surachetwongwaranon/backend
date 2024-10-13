@@ -8,9 +8,17 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
 
+const connect = async()=>{
+    try{
+
+    } catch(err){
+
+    }
+}
+
 app.use(express.json())
 app.use(cors())
-app.use()
+app.use(cookieParser())
 
 app.listen(port, ()=>{
     console.log('server listening on port', port);
