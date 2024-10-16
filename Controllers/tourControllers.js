@@ -111,3 +111,15 @@ export const getTourCount = async(req,res)=>{
         res.status(500).json({success:false, message:'failed to fetch'});
     }
 };
+
+export const getFeaturedToursCount = async(req,res)=>{
+
+    try{
+
+        const tours = await Tour.find({ featured: true });
+        res.status(200).json({ success: true, count:tours.length, message: 'successful', data: tours });
+
+    } catch (err) {
+        res.status(404).json({success:false, message:'not found'});
+    }
+};

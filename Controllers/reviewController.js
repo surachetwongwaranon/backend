@@ -17,3 +17,15 @@ export const createReview = async (req,res) => {
       res.status(500).json({success:false, message:"Failed to submit"})
    }
 }
+
+export const getReview = async (req,res) => {
+   const tourId  = req.params.tourId
+   
+   try {
+      const tour = await Tour.findById(tourId);
+
+      res.status(200).json({success:true, message:"successful", data:tourId})
+   } catch (error) {
+      res.status(500).json({success:false, message:"Failed to find"})
+   }
+}

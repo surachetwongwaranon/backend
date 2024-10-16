@@ -11,6 +11,10 @@ import bookingRoute from './routes/booking.js'
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
+const corsOptions = {
+    origin: true,
+    credentials: true
+ }
 
 mongoose.set("strictQuery", false)
 const connect = async()=>{
@@ -27,7 +31,7 @@ const connect = async()=>{
 }
 
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use('/tours', TourRoute)
 app.use('/review', reviewRoute)
