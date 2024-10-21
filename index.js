@@ -5,6 +5,8 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 import TourRoute from './routes/tours.js'
+import userRoute from './routes/users.js'
+import authRoute from './routes/auth.js'
 import reviewRoute from './routes/review.js'
 import bookingRoute from './routes/booking.js'
 
@@ -33,7 +35,9 @@ const connect = async()=>{
 app.use(express.json())
 app.use(cors(corsOptions))
 app.use(cookieParser())
+app.use('/auth', authRoute)
 app.use('/tours', TourRoute)
+app.use('/users', userRoute)
 app.use('/review', reviewRoute)
 app.use('/booking', bookingRoute)
 
