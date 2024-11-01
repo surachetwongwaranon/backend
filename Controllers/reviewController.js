@@ -18,14 +18,14 @@ export const createReview = async (req,res) => {
    }
 }
 
-export const getReview = async (req,res) => {
-   const tourId  = req.params.tourId
+export const getReview = async(req,res) => {
+   const id = req.params.id
    
    try {
-      const tour = await Tour.findById(tourId);
+      const review = await Review.findById(id)
 
-      res.status(200).json({success:true, message:"successful", data:tourId})
+      res.status(200).json({success:true, message:"Successful!", data:review})
    } catch (error) {
-      res.status(500).json({success:false, message:"Failed to find"})
+      res.status(404).json({success:false, message:"Not Found!"})
    }
-}
+} 

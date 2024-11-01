@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser'
 import TourRoute from './routes/tours.js'
 import userRoute from './routes/users.js'
 import authRoute from './routes/auth.js'
-import reviewRoute from './routes/review.js'
+import reviewRoute from './routes/reviews.js'
 import bookingRoute from './routes/booking.js'
 
 dotenv.config()

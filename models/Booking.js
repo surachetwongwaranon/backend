@@ -2,6 +2,12 @@ import mongoose from "mongoose";
 
 const bookingSchema = new mongoose.Schema(
    {
+      userId: {
+         type: String
+      },
+      userEmail: {
+         type: String
+      },
       tourName: {
          type: String,
          required: true,
@@ -16,6 +22,10 @@ const bookingSchema = new mongoose.Schema(
       },
       phone: {
          type: Number,
+         required: true
+      },
+      bookAt: {
+         type: Date,
          required: true
       },
    },
